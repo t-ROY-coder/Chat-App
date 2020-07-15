@@ -12,8 +12,13 @@ const io = socketio(server);
 
 app.use(express.static(path.join(publicDir)));
 
-io.on("connection", () => {
+io.on("connection", (socket) => {
    console.log("New WebSocket connection");
+   socket.emit("message", "Welcome!");
+
+   socket.on("sendMsg", (msg) => {
+      io.emit("updateMsg", msg);
+   });
 });
 
 server.listen(port, () => {
