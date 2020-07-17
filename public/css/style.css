@@ -1,0 +1,59 @@
+html {
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #ffffff;
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #333333;
+}
+
+header {
+    text-align: center;
+    border-bottom: 1px solid #ffffff;
+}
+
+.msg-content {
+    margin: 5px;
+    flex-grow: 1;
+    background-color: #555555;
+    border-radius: 5px;
+}
+
+#messages {
+    padding: 10px;
+}
+
+.msg {
+    display: block;
+    background-color: #777777;
+    margin: 5px;
+    padding: 2px 10px;
+    font-size: 120%;
+    border-radius: 5px;
+    overflow: auto;
+    min-width: 10%;
+    max-width: 33%;
+    width: fit-content;
+}
+
+input,
+button {
+    font-size: 120%;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    border-top: 1px solid #ffffff;
+}
+
+.ion-icon {
+    color: #ffffff;
+}

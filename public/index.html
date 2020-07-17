@@ -2,21 +2,32 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
     <title>Chat App</title>
 </head>
 
 <body>
-    <h1>Chat App</h1>
-    <div id="messages"></div>
-    <form action="">
-        <input type="text" name="message" placeholder="Message" />
-        <button>Send</button>
-    </form>
-    <button id="send-location">Send Location</button>
+    <header>
+        <h1>Chat App
+            <ion-icon name="chatbox-ellipses"></ion-icon>
+        </h1>
+    </header>
+    <section class="msg-content">
+        <div id="messages"></div>
+    </section>
+    <footer>
+        <form action="">
+            <input type="text" name="message" placeholder="Message" />
+            <button>Send</button>
+        </form>
+        <button id="send-location">Send Location</button>
+    </footer>
 
     <script id="message-template" type="text/html">
-        <div>
-            <h2>{{msg}}</h2>
+        <div class="msg">
+            <p>{{msg}}</p>
         </div>
     </script>
 
