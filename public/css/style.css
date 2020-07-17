@@ -19,9 +19,10 @@ header {
 
 .msg-content {
     margin: 5px;
-    flex-grow: 1;
+    flex-grow: 0.9;
     background-color: #555555;
     border-radius: 5px;
+    overflow-y: auto;
 }
 
 #messages {
@@ -52,8 +53,15 @@ button {
 footer {
     text-align: center;
     border-top: 1px solid #ffffff;
+    padding-top: 30px;
 }
 
 .ion-icon {
     color: #ffffff;
+}
+
+.send-btn,
+#send-location {
+    color: #ffffff;
+    background-color: #333333;
 }
