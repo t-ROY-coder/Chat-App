@@ -17,6 +17,11 @@ header {
     border-bottom: 1px solid #ffffff;
 }
 
+a {
+    color: #f39c12;
+    text-decoration: none;
+}
+
 .msg-content {
     margin: 5px;
     flex-grow: 0.9;
