@@ -9,30 +9,43 @@
 </head>
 
 <body>
-    <header>
-        <h1>Chat App&nbsp;
-            <ion-icon name="chatbox-ellipses"></ion-icon>
-        </h1>
-    </header>
-    <section class="msg-content">
-        <div id="messages"></div>
+    <section class="side-bar">
+        <ul>
+            <li>
+                <h2>ChatRoom</h2>
+            </li>
+            <li>User1</li>
+            <li>User2</li>
+            <li>User3</li>
+        </ul>
     </section>
-    <footer>
-        <form action="">
-            <input type="text" name="message" placeholder="Message" />
-            <button class="send-btn">Send</button>
-        </form>
-        <button id="send-location">Send Location</button>
-    </footer>
-
+    <section class="main-content">
+        <header>
+            <h1>Chat App&nbsp;
+                <ion-icon name="chatbox-ellipses"></ion-icon>
+            </h1>
+        </header>
+        <section class="msg-content">
+            <div id="messages"></div>
+        </section>
+        <footer>
+            <form action="">
+                <input type="text" name="message" placeholder="Message" />
+                <button class="send-btn">Send</button>
+            </form>
+            <button id="send-location">Send Location</button>
+        </footer>
+    </section>
     <script id="message-template" type="text/html">
         <div class="msg">
-            <p>{{createdAt}} - {{msg}}</p>
+            <p><span>{{createdAt}}</span></p>
+            <p>{{msg}}</p>
         </div>
     </script>
     <script id="url-template" type="text/html">
         <div class="msg">
-            <p>{{createdAt}} - <a href="{{url}}" target="_blank">My current location</a></p>
+            <p><span>{{createdAt}}</span></p>
+            <p><a href="{{url}}" target="_blank">My current location</a></p>
         </div>
     </script>
 
