@@ -3,7 +3,7 @@
 } */
 
 html {
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 body {
@@ -62,17 +62,15 @@ h2 {
 .main-content {
     padding-left: 1vw;
     width: 70vw;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 .msg-content {
     margin: 5px;
-    flex-grow: 0.9;
     background-color: #555555;
     border-radius: 5px;
-    overflow-y: auto;
+    min-height: 70vh;
+    max-height: 70vh;
+    overflow-y: scroll;
 }
 
 #messages {
@@ -94,7 +92,6 @@ h2 {
 
 p span {
     font-size: 80%;
-    font-style: italic;
 }
 
 input,
@@ -104,6 +101,11 @@ button {
     margin: 5px;
     border: none;
     border-radius: 5px;
+}
+
+.main-content input,
+.main-content button {
+    float: left;
 }
 
 footer {
@@ -120,6 +122,10 @@ footer {
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
+}
+
+#send-location {
+    float: right;
 }
 
 .side-bar {
