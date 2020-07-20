@@ -8,16 +8,23 @@ const $messages = document.querySelector('#messages')
 
 const $msgTemplate = document.querySelector('#message-template').innerHTML
 const $urlTemplate = document.querySelector('#url-template').innerHTML
+const $notficationTemplate = document.querySelector('#notification-template').innerHTML
 
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true })
 
 socket.on("message", (msg) => {
     console.log(msg);
+    const html = Mustache.render($notficationTemplate, {
+        notification: msg.text,
+        createdAt: moment(msg.createdAt).format('h:mm A')
+    })
+    $messages.insertAdjacentHTML('beforeend', html)
 });
 
 socket.on("locationMessage", (url) => {
     console.log(url);
     const html = Mustache.render($urlTemplate, {
+        username: url.username,
         url: url.text,
         createdAt: moment(url.createdAt).format('h:mm A')
     })
@@ -27,6 +34,7 @@ socket.on("locationMessage", (url) => {
 socket.on("updateMsg", (msg) => {
     console.log(msg);
     const html = Mustache.render($msgTemplate, {
+        username: msg.username,
         msg: msg.text,
         createdAt: moment(msg.createdAt).format('h:mm A')
     })
@@ -62,13 +70,18 @@ $sendLoc.addEventListener("click", () => {
             long: position.coords.longitude,
         }, (error) => {
             if (error) {
-                console.log(error)
+                alert(error)
             } else {
-                console.log('Location Shared!')
+                alert('Current Location Shared!')
             }
         });
     });
     $sendLoc.removeAttribute('disabled')
 });
 
-socket.emit('join', { username, room })
+socket.emit('join', { username, room }, (error) => {
+    if (error) {
+        alert(error)
+        location.href = '/'
+    }
+})

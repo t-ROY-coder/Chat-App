@@ -30,23 +30,27 @@
         </section>
         <footer>
             <form action="">
-                <input type="text" name="message" placeholder="Message" />
+                <input type="text" name="message" placeholder="Message" required/>
                 <button class="send-btn">Send</button>
             </form>
             <button id="send-location">Send Location</button>
         </footer>
     </section>
+
     <script id="message-template" type="text/html">
-        <p><span>{{createdAt}}</span></p>
+        <p><span>{{createdAt}} - {{username}}</span></p>
         <div class="msg">
             <p>{{msg}}</p>
         </div>
     </script>
     <script id="url-template" type="text/html">
+        <p><span>{{createdAt}} - {{username}}</span></p>
         <div class="msg">
-            <p><span>{{createdAt}}</span></p>
             <p><a href="{{url}}" target="_blank">My current location</a></p>
         </div>
+    </script>
+    <script id="notification-template" type="text/html">
+        <p><span>{{createdAt}} - {{notification}}</span></p>
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>

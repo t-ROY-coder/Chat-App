@@ -1,10 +1,19 @@
-const generateMsg = (text) => {
+const generateNotification = (text) => {
     return {
-        text: text,
+        text,
+        createdAt: new Date().getTime()
+    }
+}
+
+const generateMsg = (username, text) => {
+    return {
+        username,
+        text,
         createdAt: new Date().getTime()
     }
 }
 
 module.exports = {
-    generateMsg
+    generateMsg,
+    generateNotification
 }
