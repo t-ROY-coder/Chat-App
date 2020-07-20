@@ -128,7 +128,7 @@ footer {
     float: right;
 }
 
-.side-bar {
+.sidebar {
     width: 25vw;
     float: right;
     border-left: 1px solid #777777;
@@ -138,12 +138,11 @@ footer {
     min-height: 100vh;
 }
 
-.side-bar ul {
-    list-style: none;
+.sidebar ul {
     padding: 5px 0 0 20px;
     flex-grow: 1;
 }
 
-.side-bar li {
+.sidebar li {
     margin: 5px 0;
 }

@@ -4,7 +4,7 @@ const express = require("express");
 const socketio = require("socket.io");
 const Filter = require('bad-words')
 
-const { addUser, removeUser, getUser, getUserInRoom } = require('./utils/users')
+const { addUser, removeUser, getUser, getUsersInRoom } = require('./utils/users')
 const { generateMsg, generateNotification } = require('./utils/messages')
 
 const publicDir = path.join(__dirname, "../public");
@@ -29,6 +29,10 @@ io.on("connection", (socket) => {
 
         socket.emit("message", generateNotification('Welcome!'));
         socket.broadcast.to(user.room).emit("message", generateNotification(user.username + ' has joined'));
+        io.to(user.room).emit('roomData', {
+            room: user.room,
+            users: getUsersInRoom(user.room)
+        })
 
         callback()
     })
@@ -65,6 +69,10 @@ io.on("connection", (socket) => {
 
         if (user) {
             io.to(user.room).emit("message", generateNotification(user.username + " has left!"));
+            io.to(user.room).emit('roomData', {
+                room: user.room,
+                users: getUsersInRoom(user.room)
+            })
         }
     });
 });

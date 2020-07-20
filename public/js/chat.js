@@ -5,41 +5,55 @@ const $msgFormInput = $msgForm.querySelector('input')
 const $msgFormButton = $msgForm.querySelector('button')
 const $sendLoc = document.querySelector("#send-location")
 const $messages = document.querySelector('#messages')
+const $sidebar = document.querySelector('.sidebar')
 
 const $msgTemplate = document.querySelector('#message-template').innerHTML
 const $urlTemplate = document.querySelector('#url-template').innerHTML
 const $notficationTemplate = document.querySelector('#notification-template').innerHTML
+const $sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
 
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true })
 
+const autoscroll = () => {
+    $messages.scrollTop = $messages.scrollHeight
+}
+
 socket.on("message", (msg) => {
-    console.log(msg);
     const html = Mustache.render($notficationTemplate, {
         notification: msg.text,
         createdAt: moment(msg.createdAt).format('h:mm A')
     })
     $messages.insertAdjacentHTML('beforeend', html)
+    autoscroll()
 });
 
 socket.on("locationMessage", (url) => {
-    console.log(url);
     const html = Mustache.render($urlTemplate, {
         username: url.username,
         url: url.text,
         createdAt: moment(url.createdAt).format('h:mm A')
     })
     $messages.insertAdjacentHTML('beforeend', html)
+    autoscroll()
 });
 
 socket.on("updateMsg", (msg) => {
-    console.log(msg);
     const html = Mustache.render($msgTemplate, {
         username: msg.username,
         msg: msg.text,
         createdAt: moment(msg.createdAt).format('h:mm A')
     })
     $messages.insertAdjacentHTML('beforeend', html)
+    autoscroll()
 });
+
+socket.on('roomData', ({ room, users }) => {
+    const html = Mustache.render($sidebarTemplate, {
+        room,
+        users
+    })
+    $sidebar.innerHTML = html
+})
 
 $msgForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -51,9 +65,7 @@ $msgForm.addEventListener("submit", (e) => {
         $msgFormInput.value = ''
         $msgFormInput.focus()
         if (error) {
-            console.log(error)
-        } else {
-            console.log("Delivered!");
+            alert(error)
         }
     });
 });
