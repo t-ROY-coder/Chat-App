@@ -22,6 +22,43 @@ a {
     text-decoration: none;
 }
 
+h1,
+h2 {
+    text-align: center;
+}
+
+.form-box {
+    margin: auto;
+    width: 25%;
+    border: 1px solid #777777;
+    padding: 20px;
+}
+
+.join-form input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.join-form button {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.join-form button:hover {
+    background-color: #45a049;
+}
+
 .main-content {
     padding-left: 1vw;
     width: 70vw;
@@ -63,13 +100,13 @@ p span {
 input,
 button {
     font-size: 120%;
-    padding: 5px;
+    padding: 10px;
     margin: 5px;
+    border: none;
     border-radius: 5px;
 }
 
 footer {
-    text-align: center;
     border-top: 1px solid #ffffff;
     padding-top: 30px;
 }
@@ -80,8 +117,9 @@ footer {
 
 .send-btn,
 #send-location {
-    color: #ffffff;
-    background-color: #333333;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
 }
 
 .side-bar {
