@@ -5,6 +5,7 @@ const $msgFormInput = $msgForm.querySelector('input')
 const $msgFormButton = $msgForm.querySelector('button')
 const $sendLoc = document.querySelector("#send-location")
 const $messages = document.querySelector('#messages')
+const $msgContent = document.querySelector('.msg-content')
 const $sidebar = document.querySelector('.sidebar')
 
 const $msgTemplate = document.querySelector('#message-template').innerHTML
@@ -16,7 +17,7 @@ const $sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
 const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true })
 
 const autoscroll = () => {
-    $messages.scrollTop = $messages.scrollHeight
+    $msgContent.scrollTop = $msgContent.scrollHeight
 }
 
 socket.on("message", (msg) => {
