@@ -5,10 +5,11 @@ const generateNotification = (text) => {
     }
 }
 
-const generateMsg = (username, text) => {
+const generateMsg = (username, text, id) => {
     return {
         username,
         text,
+        id,
         createdAt: new Date().getTime()
     }
 }

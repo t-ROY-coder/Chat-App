@@ -28,7 +28,7 @@ io.on("connection", (socket) => {
         socket.join(user.room)
 
         socket.emit("message", generateNotification('Welcome!'));
-        socket.broadcast.to(user.room).emit("message", generateNotification(user.username + ' has joined'));
+        socket.broadcast.to(user.room).emit("message", generateNotification(user.username + ' has joined!'));
         io.to(user.room).emit('roomData', {
             room: user.room,
             users: getUsersInRoom(user.room)
@@ -47,7 +47,7 @@ io.on("connection", (socket) => {
         if (filter.isProfane(msg)) {
             return callback('Profanity is not allowed.')
         }
-        io.to(user.room).emit("updateMsg", generateMsg(user.username, msg));
+        io.to(user.room).emit("updateMsg", generateMsg(user.username, msg, socket.id));
         callback();
     });
 

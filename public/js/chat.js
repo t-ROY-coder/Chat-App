@@ -8,6 +8,7 @@ const $messages = document.querySelector('#messages')
 const $sidebar = document.querySelector('.sidebar')
 
 const $msgTemplate = document.querySelector('#message-template').innerHTML
+const $mymsgTemplate = document.querySelector('#my-message-template').innerHTML
 const $urlTemplate = document.querySelector('#url-template').innerHTML
 const $notficationTemplate = document.querySelector('#notification-template').innerHTML
 const $sidebarTemplate = document.querySelector('#sidebar-template').innerHTML
@@ -25,7 +26,7 @@ socket.on("message", (msg) => {
     })
     $messages.insertAdjacentHTML('beforeend', html)
     autoscroll()
-});
+})
 
 socket.on("locationMessage", (url) => {
     const html = Mustache.render($urlTemplate, {
@@ -35,17 +36,22 @@ socket.on("locationMessage", (url) => {
     })
     $messages.insertAdjacentHTML('beforeend', html)
     autoscroll()
-});
+})
 
 socket.on("updateMsg", (msg) => {
-    const html = Mustache.render($msgTemplate, {
+    var temp = $msgTemplate
+    if (msg.id === socket.id) {
+        temp = $mymsgTemplate
+        msg.username = 'You'
+    }
+    const html = Mustache.render(temp, {
         username: msg.username,
         msg: msg.text,
         createdAt: moment(msg.createdAt).format('h:mm A')
     })
     $messages.insertAdjacentHTML('beforeend', html)
     autoscroll()
-});
+})
 
 socket.on('roomData', ({ room, users }) => {
     const html = Mustache.render($sidebarTemplate, {

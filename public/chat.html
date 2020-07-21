@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <link rel="icon" href="./img/chatbox-ellipses-outline.svg">
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
@@ -31,19 +32,25 @@
     </section>
 
     <script id="message-template" type="text/html">
-        <p><span>{{createdAt}} - <b>{{username}}</b></span></p>
+        <p><span><ion-icon name="caret-forward-outline"></ion-icon>{{createdAt}} - <b>{{username}}</b></span></p>
         <div class="msg">
             <p>{{msg}}</p>
         </div>
     </script>
+    <script id="my-message-template" type="text/html">
+        <p><span><ion-icon name="caret-back-outline"></ion-icon>{{createdAt}} - <b>{{username}}</b></span></p>
+        <div class="my-msg">
+            <p>{{msg}}</p>
+        </div>
+    </script>
     <script id="url-template" type="text/html">
-        <p><span>{{createdAt}} - <b>{{username}}</b></span></p>
+        <p><span><ion-icon name="caret-forward-outline"></ion-icon>{{createdAt}} - <b>{{username}}</b></span></p>
         <div class="msg">
             <p><a href="{{url}}" target="_blank">My current location</a></p>
         </div>
     </script>
     <script id="notification-template" type="text/html">
-        <p><span>{{createdAt}} - {{notification}}</span></p>
+        <p><span><ion-icon name="caret-forward-outline"></ion-icon>{{createdAt}} - {{notification}}</span></p>
     </script>
     <script id="sidebar-template" type="text/html">
         <h2>{{room}}</h2>
